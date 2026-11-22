@@ -1,0 +1,25 @@
+name: OneLink integration contract tests
+on:
+  push:
+    paths:
+      - 'shared/onelink/**'
+      - 'tests/onelink-integration.test.mjs'
+      - '.github/workflows/onelink-contract.yml'
+  pull_request:
+    paths:
+      - 'shared/onelink/**'
+      - 'tests/onelink-integration.test.mjs'
+      - '.github/workflows/onelink-contract.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate OneLink integration contract
+        run: node --test tests/onelink-integration.test.mjs
