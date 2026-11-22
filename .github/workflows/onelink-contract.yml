@@ -3,7 +3,7 @@ on:
   push:
     paths:
       - 'shared/onelink/**'
-      - 'tests/onelink-integration.test.mjs'
+      - 'tests/onelink-*.test.mjs'
       - '.github/workflows/onelink-contract.yml'
   pull_request:
     paths:
@@ -22,4 +22,4 @@ jobs:
         with:
           node-version: '22'
       - name: Validate OneLink integration contract
-        run: node --test tests/onelink-integration.test.mjs
+        run: node --test tests/onelink-integration.test.mjs tests/onelink-registry-worker.test.mjs
