@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS oidc_clients (
+ client_id TEXT PRIMARY KEY,
+ owner TEXT NOT NULL,
+ redirect_uris_json TEXT NOT NULL,
+ logout_uris_json TEXT NOT NULL DEFAULT '[]',
+ allowed_scopes_json TEXT NOT NULL,
+ enabled INTEGER NOT NULL DEFAULT 0 CHECK(enabled IN (0,1)),
+ created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS oidc_client_audit (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ client_id TEXT NOT NULL,
+ action TEXT NOT NULL,
+ actor TEXT NOT NULL,
+ created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
