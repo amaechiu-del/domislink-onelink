@@ -1,4 +1,18 @@
-# DomisLink App
+# DomisLink OneLink — Central Identity & Application Registry
+
+> **Repository rename target:** `amaechiu-del/domislink-onelink` (GitHub repository rename pending).
+>
+> **Purpose:** One central login and sign-up identity for DomisLink applications, plus a protected registry of approved OIDC clients. Each participating application independently manages its own workspace, tenant membership, permissions, and business data.
+>
+> **Implementation status:** Shared OIDC request contract, in-memory client registry, D1 migration, and protected registry Worker are committed. Live OneLink authorization-server integration, D1 provisioning, token verification, and cross-app sign-in are not yet confirmed.
+>
+> **Architecture:** [ADR-0001](docs/architecture/ADR-0001-onelink-central-identity-and-app-isolation.md) · [Integration backlog](docs/architecture/ONELINK-INTEGRATION-IMPROVEMENT-BACKLOG.md) · [Registry service](services/onelink-registry/README.md)
+>
+> **Important:** The existing public app-card landing page and Render configuration are legacy components. They must be reviewed and migrated or retired separately; this README change does not transform them into an identity provider.
+
+---
+
+## Legacy DomisLink App landing page (migration pending)
 
 A modern public landing page showcasing the 10 DomisLink subdomain applications as interactive, clickable cards.
 
