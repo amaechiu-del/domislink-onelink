@@ -35,7 +35,7 @@ export async function createAuthorizationRequest({ registry, clientId, redirectU
   const issuerUrl = new URL(requiredString(issuer, 'issuer'));
   if (issuerUrl.protocol !== 'https:' || issuerUrl.username || issuerUrl.password || issuerUrl.search || issuerUrl.hash) throw new Error('Invalid issuer');
   const verifier = randomToken(), state = randomToken(), nonce = randomToken();
-  const url = new URL('authorize', issuerUrl.href.endsWith('/') ? issuerUrl.href : issuerUrl.href + '/');
+  const url = new URL('oauth/authorize', issuerUrl.href.endsWith('/') ? issuerUrl.href : issuerUrl.href + '/');
   url.searchParams.set('response_type', 'code');
   url.searchParams.set('client_id', clientId);
   url.searchParams.set('redirect_uri', redirectUri);
